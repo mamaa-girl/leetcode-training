@@ -17,5 +17,26 @@
 			}
 			return new int[] { 0, 0 };
 		}
+
+		// https://leetcode.com/problems/palindrome-number/
+		public bool IsPalindrome_9(int x)
+		{
+			if (x < 0)
+			{
+				return false;
+			}
+
+			var number = x.ToString();
+
+			var length = number.Length - 1;
+			for (var i = 0; i < length / 2.0; i++)
+			{
+				if (number[i] != number[length - i])
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }

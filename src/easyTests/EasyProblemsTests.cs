@@ -1,9 +1,11 @@
-﻿using easy;
+﻿
+using easy;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using NUnit;
 using NUnit.Framework;
 
 namespace easyTests
-{
+{	
 	[TestFixture]
 	public class EasyProblemsTests
 	{
@@ -21,6 +23,15 @@ namespace easyTests
 		public void TwoSum_1Test(int[] nums, int target, int[] output)
 		{
 			Assert.That(_easyProblems.TwoSum_1(nums, target), Is.EquivalentTo(output));
+		}
+
+		[TestCase(121, true)]
+		[TestCase(-121, false)]
+		[TestCase(10, false)]
+		[TestCase(1001, true)]
+		public void IsPalindrome_9Test(int input, bool output)
+		{
+			Assert.That(_easyProblems.IsPalindrome_9(input), Is.EqualTo(output));
 		}
 	}
 }
