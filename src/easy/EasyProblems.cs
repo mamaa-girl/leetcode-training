@@ -1,4 +1,6 @@
-﻿namespace easy
+﻿using System.Text;
+
+namespace easy
 {
 	public class EasyProblems
 	{
@@ -37,6 +39,30 @@
 				}
 			}
 			return true;
+		}
+
+		// https://leetcode.com/problems/longest-common-prefix/
+		public string LongestCommonPrefix_14(string[] strs)
+		{
+			StringBuilder ss = new StringBuilder();
+
+			var shortest = strs.Min(x => x.Length);
+
+			for (var i = 0; i < shortest; i++)
+			{
+				var current = strs[0][i];
+				foreach (var str in strs)
+				{
+					if (str[i] != current)
+					{
+						return ss.ToString();
+					}
+				}
+				ss.Append(current);
+			}
+
+			return ss.ToString();
+
 		}
 	}
 }
