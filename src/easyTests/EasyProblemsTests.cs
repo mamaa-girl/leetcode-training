@@ -1,5 +1,4 @@
 ﻿using easy;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 using NUnit;
 using NUnit.Framework;
 
@@ -33,11 +32,23 @@ namespace easyTests
 			Assert.That(_easyProblems.IsPalindrome_9(input), Is.EqualTo(output));
 		}
 
-		[TestCase(new string[] {"flower", "flow", "flight"}, "fl")]
+		[TestCase(new string[] { "flower", "flow", "flight" }, "fl")]
 		[TestCase(new string[] { "dog", "racecar", "car" }, "")]
 		public void LongestCommonPrefix_14Test(string[] input, string output)
 		{
 			Assert.That(_easyProblems.LongestCommonPrefix_14(input), Is.EqualTo(output));
+		}
+
+		[TestCase("()", true)]
+		[TestCase("()[]{}", true)]
+		[TestCase("(]", false)]
+		[TestCase(")(", false)]
+		[TestCase("(()", false)]
+		[TestCase("())(", false)]
+		[TestCase("([)]", false)]
+		public void IsValid_20Test(string input, bool output)
+		{
+			Assert.That(_easyProblems.IsValid_20(input), Is.EqualTo(output));
 		}
 	}
 }

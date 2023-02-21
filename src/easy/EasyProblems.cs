@@ -64,5 +64,78 @@ namespace easy
 			return ss.ToString();
 
 		}
+
+		// https://leetcode.com/problems/valid-parentheses/
+		public bool IsValid_20(string s)
+		{
+			Stack<char> stack = new Stack<char>();
+
+			foreach (var c in s)
+			{
+				if (stack.Any())
+				{
+					var top = stack.Pop();
+					if (top is '(')
+					{
+						if (c == ')')
+						{
+
+						}
+						else if (c == ']' || c == '}')
+						{
+							return false;
+						}
+						else
+						{
+							stack.Push(top);
+							stack.Push(c);
+						}
+					}
+					else if (top is '[')
+					{
+						if (c == ']')
+						{
+
+						}
+						else if (c == ')' || c == '}')
+						{
+							return false;
+						}
+						else
+						{
+							stack.Push(top);
+							stack.Push(c);
+						}
+					}
+					else if (top is '{')
+					{
+						if (c == '}')
+						{
+
+						}
+						else if (c == ']' || c == ')')
+						{
+							return false;
+						}
+						else
+						{
+							stack.Push(top);
+							stack.Push(c);
+						}
+					}
+					else
+					{
+						stack.Push(top);
+					}
+				}
+				else
+				{
+					stack.Push(c);
+				}
+			}
+
+			return !stack.Any();
+
+		}
 	}
 }
