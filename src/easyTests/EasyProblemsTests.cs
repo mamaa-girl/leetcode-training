@@ -98,5 +98,14 @@ namespace easyTests
 			Assert.That(res, Is.EqualTo(output));
 			Assert.AreEqual(out1, out2);
 		}
+
+		[TestCase("sadbutsad", "sad", 0)]
+		[TestCase("leetcode", "leeto", -1)]
+		public void StrStrTest(string haystack, string needle, int index)
+		{
+			var result = _easyProblems.StrStr(haystack, needle);
+
+			Assert.That(result, Is.EqualTo(index));
+		}
 	}
 }
