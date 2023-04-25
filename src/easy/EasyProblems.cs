@@ -182,9 +182,9 @@ namespace easy
 			var unique = nums.Distinct().ToArray();
 			var count = unique.Count();
 
-			for(var i = 0; i < nums.Length; i++)
+			for (var i = 0; i < nums.Length; i++)
 			{
-				if(i < count)
+				if (i < count)
 				{
 					nums[i] = unique[i];
 				}
@@ -195,6 +195,26 @@ namespace easy
 			}
 
 			return count;
+		}
+
+		// https://leetcode.com/problems/remove-element/
+		public int RemoveElement(int[] nums, int val)
+		{
+			var result = 0;
+			var currentLocation = 0;
+
+			for (var i = 0; i < nums.Length; i++)
+			{
+				if (nums[i] == val)
+				{
+					continue;
+				}
+				result++;
+				nums[currentLocation] = nums[i];
+				currentLocation++;
+			}
+
+			return result;
 		}
 	}
 }

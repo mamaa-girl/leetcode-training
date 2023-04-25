@@ -7,7 +7,7 @@ using static easy.EasyProblems;
 
 namespace easyTests
 {
-	
+
 	[TestFixture]
 	public class EasyProblemsTests
 	{
@@ -65,7 +65,7 @@ namespace easyTests
 			list2.next = new ListNode(3);
 			list2.next.next = new ListNode(4);
 
-			
+
 			var result = _easyProblems.MergeTwoLists(list1, list2);
 			ListNode output = new ListNode(1);
 			output.next = new ListNode(1);
@@ -73,18 +73,30 @@ namespace easyTests
 			output.next.next.next = new ListNode(3);
 			output.next.next.next.next = new ListNode(4);
 			output.next.next.next.next.next = new ListNode(4);
-			
+
 			// How to check?
 			Assert.AreEqual(true, true);
 		}
 
-		[TestCase(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, new int[] { 0, 1, 2, 3, 4, 0, 0, 0, 0, 0 }, 5)]
+		[TestCase(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 }, new int[] { 0, 1, 2, 3, 4, 0, 0, 0, 0, 0 }, 5)]
 		public void RemoveDuplicatesTest(int[] nums, int[] output, int result)
 		{
 			var res = _easyProblems.RemoveDuplicates(nums);
 
 			Assert.AreEqual(result, res);
 			Assert.AreEqual(nums, output);
+		}
+
+		[TestCase(new int[] { 0, 1, 2, 2, 3, 0, 4, 2 }, 2, 5, new int[] { 0, 1, 3, 0, 4, 0, 0, 0 })]
+		public void RemoveElementTest(int[] input, int remove, int output, int[] outArray)
+		{
+			var res = _easyProblems.RemoveElement(input, remove);
+
+			var out1 = input.Take(res);
+			var out2 = outArray.Take(res);
+
+			Assert.That(res, Is.EqualTo(output));
+			Assert.AreEqual(out1, out2);
 		}
 	}
 }
