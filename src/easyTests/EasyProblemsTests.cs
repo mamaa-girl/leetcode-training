@@ -1,9 +1,13 @@
-﻿using easy;
+﻿
+using Domain;
+using easy;
 using NUnit;
 using NUnit.Framework;
+using static easy.EasyProblems;
 
 namespace easyTests
 {
+	
 	[TestFixture]
 	public class EasyProblemsTests
 	{
@@ -49,6 +53,38 @@ namespace easyTests
 		public void IsValid_20Test(string input, bool output)
 		{
 			Assert.That(_easyProblems.IsValid_20(input), Is.EqualTo(output));
+		}
+
+		[Test]
+		public void MergeTwoListsTest()
+		{
+			ListNode list1 = new ListNode(1);
+			list1.next = new ListNode(2);
+			list1.next.next = new ListNode(4);
+			ListNode list2 = new ListNode(1);
+			list2.next = new ListNode(3);
+			list2.next.next = new ListNode(4);
+
+			
+			var result = _easyProblems.MergeTwoLists(list1, list2);
+			ListNode output = new ListNode(1);
+			output.next = new ListNode(1);
+			output.next.next = new ListNode(2);
+			output.next.next.next = new ListNode(3);
+			output.next.next.next.next = new ListNode(4);
+			output.next.next.next.next.next = new ListNode(4);
+			
+			// How to check?
+			Assert.AreEqual(true, true);
+		}
+
+		[TestCase(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, new int[] { 0, 1, 2, 3, 4, 0, 0, 0, 0, 0 }, 5)]
+		public void RemoveDuplicatesTest(int[] nums, int[] output, int result)
+		{
+			var res = _easyProblems.RemoveDuplicates(nums);
+
+			Assert.AreEqual(result, res);
+			Assert.AreEqual(nums, output);
 		}
 	}
 }

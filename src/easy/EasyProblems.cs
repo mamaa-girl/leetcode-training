@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Domain;
+using System.Text;
 
 namespace easy
 {
@@ -136,6 +137,64 @@ namespace easy
 
 			return !stack.Any();
 
+		}
+
+		// https://leetcode.com/problems/merge-two-sorted-lists/
+		public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+		{
+			var temp = new ListNode(0);
+			var result = temp;
+
+			while (list1 != null && list2 != null)
+			{
+				if (list1 != null && list2 != null)
+				{
+					if (list1.val <= list2.val)
+					{
+						temp.next = new ListNode(list1.val);
+						list1 = list1.next;
+					}
+					else
+					{
+						temp.next = new ListNode(list2.val);
+						list2 = list2.next;
+					}
+				}
+				else if (list1 != null)
+				{
+					temp.next = new ListNode(list1.val);
+					list1 = list1.next;
+				}
+				else if (list2 != null)
+				{
+
+					temp.next = new ListNode(list2.val);
+					list2 = list2.next;
+				}
+				temp = temp.next;
+			}
+			return result.next;
+		}
+
+		// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+		public int RemoveDuplicates(int[] nums)
+		{
+			var unique = nums.Distinct().ToArray();
+			var count = unique.Count();
+
+			for(var i = 0; i < nums.Length; i++)
+			{
+				if(i < count)
+				{
+					nums[i] = unique[i];
+				}
+				else
+				{
+					nums[i] = 0;
+				}
+			}
+
+			return count;
 		}
 	}
 }
