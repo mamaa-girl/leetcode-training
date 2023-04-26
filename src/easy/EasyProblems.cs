@@ -225,5 +225,34 @@ namespace easy
 
 			return result;
 		}
+
+		// https://leetcode.com/problems/search-insert-position/
+		/// <summary>
+		///		Not O(log n) should be using bubble search to find ...
+		/// </summary>
+		/// <param name="nums"></param>
+		/// <param name="target"></param>
+		/// <returns></returns>
+		public int SearchInsert(int[] nums, int target)
+		{
+			if (nums.Length == 0)
+			{
+				return 0;
+			}
+			if (nums[0] > target)
+			{
+				return 0;
+			}
+			for (var i = 0; i < nums.Length; ++i)
+			{
+				if (nums[i] == target)
+					return i;
+				else if ((i - 1) >= 0 && nums[i - 1] < target && target < nums[i])
+				{
+					return i;
+				}
+			}
+			return nums.Length;
+		}
 	}
 }

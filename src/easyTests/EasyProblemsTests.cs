@@ -3,6 +3,7 @@ using Domain;
 using easy;
 using NUnit;
 using NUnit.Framework;
+using System;
 using static easy.EasyProblems;
 
 namespace easyTests
@@ -106,6 +107,17 @@ namespace easyTests
 			var result = _easyProblems.StrStr(haystack, needle);
 
 			Assert.That(result, Is.EqualTo(index));
+		}
+
+		[TestCase(new int[] { 1, 3, 5, 6 }, 5, 2)]
+		[TestCase(new int[] { 1, 3, 5, 6 }, 2, 1)]
+		[TestCase(new int[] { 1, 3, 5, 6 }, 7, 4)]
+		[TestCase(new int[] { 1, 3, 5, 6 }, 0, 0)]
+		public void SearchInsertTest(int[] nums, int target, int output)
+		{
+			var result = _easyProblems.SearchInsert(nums, target);
+
+			Assert.That(result, Is.EqualTo(output));
 		}
 	}
 }
