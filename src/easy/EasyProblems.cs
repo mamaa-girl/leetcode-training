@@ -254,5 +254,42 @@ namespace easy
 			}
 			return nums.Length;
 		}
+
+		// https://leetcode.com/problems/length-of-last-word/
+		public int LengthOfLastWord(string s)
+		{
+			return s.Trim().Split(' ').Last().Length;
+
+		}
+
+		// https://leetcode.com/problems/plus-one/
+		public int[] PlusOne(int[] digits)
+		{
+			List<int> result = new();
+			var remainder = 1;
+			for (var i = digits.Length - 1; i >= 0; --i)
+			{
+				var current = digits[i] + remainder;
+
+				if (current == 10)
+				{
+					current = 0;
+					remainder = 1;
+				}
+				else
+				{
+					remainder = 0;
+				}
+
+				result.Add(current);
+			}
+			if (remainder == 1)
+			{
+				result.Add(remainder);
+			}
+
+			result.Reverse();
+			return result.ToArray();
+		}
 	}
 }

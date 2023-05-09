@@ -1,6 +1,7 @@
 ﻿
 using Domain;
 using easy;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using NUnit;
 using NUnit.Framework;
 using System;
@@ -100,12 +101,15 @@ namespace easyTests
 			Assert.AreEqual(out1, out2);
 		}
 
+		// Arrange
 		[TestCase("sadbutsad", "sad", 0)]
 		[TestCase("leetcode", "leeto", -1)]
 		public void StrStrTest(string haystack, string needle, int index)
 		{
+			// Act
 			var result = _easyProblems.StrStr(haystack, needle);
 
+			// Assert
 			Assert.That(result, Is.EqualTo(index));
 		}
 
@@ -119,5 +123,27 @@ namespace easyTests
 
 			Assert.That(result, Is.EqualTo(output));
 		}
+
+		[TestCase("Hello World", 5)]
+		[TestCase("   fly me   to   the moon  ", 4)]
+		public void LengthOfLastWordTest(string input, int output)
+		{
+			var result = _easyProblems.LengthOfLastWord(input);
+
+			Assert.That(result, Is.EqualTo(output));
+		}
+
+		[TestCase(new int[] { 1, 2, 3 }, new int[] { 1, 2, 4 })]
+		[TestCase(new int[] { 9 }, new int[] { 1, 0 })]
+		[TestCase(new int[] { 9, 9, 9, 9 }, new int[] { 1, 0, 0, 0, 0 })]
+		[TestCase(new int[] { 0 }, new int[] { 1 })]
+		public void PlustOneTest(int[] input, int[] output)
+		{
+			var result = _easyProblems.PlusOne(input);
+
+			Assert.AreEqual(result, output);
+		}
+
+
 	}
 }
