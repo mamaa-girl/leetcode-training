@@ -291,5 +291,48 @@ namespace easy
 			result.Reverse();
 			return result.ToArray();
 		}
+
+		// https://leetcode.com/problems/add-binary/
+		public string AddBinary(string a, string b)
+		{
+			StringBuilder result = new StringBuilder();
+
+			var max = Math.Max(a.Length, b.Length);
+
+			a = a.PadLeft(max, '0');
+			b = b.PadLeft(max, '0');
+
+			int sum = 0;
+
+			for (var i = max - 1; i >= 0; --i)
+			{
+				sum += int.Parse(a[i].ToString()) + int.Parse(b[i].ToString());
+
+				if (sum >= 2)
+				{
+					result.Insert(0, sum % 2);
+					sum = 1;
+				}
+				else
+				{
+					result.Insert(0, sum);
+					sum = 0;
+				}
+			}
+
+			// For any remainder
+			if (sum > 0)
+			{
+				result.Insert(0, sum);
+			}
+
+			return result.ToString();
+		}
+
+		// https://leetcode.com/problems/sqrtx/
+		public int MySqrt(int x)
+		{
+			return (int)Math.Floor(Math.Sqrt(x));
+		}
 	}
 }

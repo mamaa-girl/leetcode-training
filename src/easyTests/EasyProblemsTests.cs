@@ -144,6 +144,25 @@ namespace easyTests
 			Assert.AreEqual(result, output);
 		}
 
+		[TestCase("11", "1", "100")]
+		[TestCase("1010", "1011", "10101")]
+		[TestCase("1111", "1111", "11110")]
+		public void AddBinaryTest(string input1, string input2, string output)
+		{
+			var result = _easyProblems.AddBinary(input1, input2);
 
+			Assert.That(result, Is.EqualTo(output));
+		}
+
+		[TestCase(4, 2)]
+		[TestCase(8, 2)]
+		[TestCase(49, 7)]
+		[TestCase(51, 7)]
+		public void MySqrtTest(int x, int output)
+		{
+			var result = _easyProblems.MySqrt(x);
+
+			Assert.That(result, Is.EqualTo(output));
+		}
 	}
 }
