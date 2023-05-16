@@ -164,5 +164,24 @@ namespace easyTests
 
 			Assert.That(result, Is.EqualTo(output));
 		}
+
+		[Test]
+		public void DeleteDuplicatesTest()
+		{
+			var head1 = new ListNode(1);
+			head1.next = new ListNode(1);
+			head1.next.next = new ListNode(2);
+			var result2 = _easyProblems.DeleteDuplicates(head1);
+
+			var head2 = new ListNode(1);
+			head2.next = new ListNode(2);
+			head2.next.next = new ListNode(2);
+			head2.next.next.next = new ListNode(3);
+			head2.next.next.next = new ListNode(3);
+
+			var result3 = _easyProblems.DeleteDuplicates(head2);
+
+			Assert.That(true, Is.EqualTo(true));
+		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Domain;
+using NUnit.Framework.Interfaces;
 using System.Text;
 
 namespace easy
@@ -333,6 +334,34 @@ namespace easy
 		public int MySqrt(int x)
 		{
 			return (int)Math.Floor(Math.Sqrt(x));
+		}
+
+		// https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+		public ListNode DeleteDuplicates(ListNode head)
+		{
+
+			if (head == null || head.next == null)
+			{
+				return head;
+			}
+
+			var current = head.val;
+			var result = new ListNode(current);
+			var temp = result;
+
+			while (head.next != null)
+			{
+				if (head.next.val != current)
+				{
+					current = head.next.val;
+					result.next = new ListNode(current);
+					result = result.next;
+				}
+				head = head.next;
+
+			}
+
+			return temp;
 		}
 	}
 }
