@@ -363,5 +363,46 @@ namespace easy
 
 			return temp;
 		}
+
+		// https://leetcode.com/problems/merge-sorted-array/description/
+		public void Merge(int[] nums1, int m, int[] nums2, int n)
+		{
+			var x = nums1.Take(m);
+			var y = nums2.Take(n);
+			var z = x.Concat(y).OrderBy(x => x).ToArray();
+			for (var i = 0; i < z.Length; i++)
+			{
+				nums1[i] = z[i];
+			}
+		}
+
+
+		// https://leetcode.com/problems/merge-sorted-array/		
+		public void MergeSortedArray(int[] num1, int m, int[] num2, int n)
+		{
+			var x = num1.Take(m);
+			var y = num2.Take(n);
+			var z = x.Concat(y).OrderBy(x => x).ToArray();
+			for (var i = 0; i < z.Length; i++)
+			{
+				num1[i] = z[i];
+			}
+		}
+
+		// https://leetcode.com/problems/maximum-depth-of-binary-tree/
+		public int MaxDepth(TreeNode node)
+		{
+			return MaxDepthRecursion(node, 0);
+		}
+
+		private int MaxDepthRecursion(TreeNode node, int depth)
+		{
+			if (node == null)
+			{
+				return depth;
+			}
+
+			return Math.Max(MaxDepthRecursion(node.left, depth + 1), MaxDepthRecursion(node.right, depth + 1));
+		}
 	}
 }
