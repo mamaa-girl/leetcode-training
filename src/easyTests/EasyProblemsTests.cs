@@ -1,11 +1,7 @@
 ﻿
 using Domain;
 using easy;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
-using NUnit;
 using NUnit.Framework;
-using System;
-using static easy.EasyProblems;
 
 namespace easyTests
 {
@@ -185,7 +181,7 @@ namespace easyTests
 		}
 
 		[TestCase(new int[] { 1, 2, 3, 0, 0, 0 }, 3, new int[] { 2, 5, 6 }, 3, new int[] { 1, 2, 2, 3, 5, 6 })]
-		[TestCase(new int[] { 1 }, 1, new int[] { }, 0 ,new int[] { 1 })]
+		[TestCase(new int[] { 1 }, 1, new int[] { }, 0, new int[] { 1 })]
 		[TestCase(new int[] { 0 }, 0, new int[] { 1 }, 1, new int[] { 1 })]
 		public void MergeTest(int[] num1, int m, int[] num2, int n, int[] result)
 		{
@@ -195,7 +191,6 @@ namespace easyTests
 		}
 
 		[Test]
-
 		public void MaxDepthTest()
 		{
 			TreeNode t = new TreeNode(3);
@@ -207,6 +202,39 @@ namespace easyTests
 			var x = _easyProblems.MaxDepth(t);
 
 			Assert.That(x, Is.EqualTo(3));
+		}
+
+		[Test]
+
+		public void IsSymmetricTest()
+		{
+			TreeNode symetric = new TreeNode(1);
+			symetric.left = new TreeNode(2);
+			symetric.right = new TreeNode(2);
+
+			symetric.left.left = new TreeNode(3);
+			symetric.left.right = new TreeNode(4);
+
+			symetric.right.left = new TreeNode(4);
+			symetric.right.right = new TreeNode(3);
+
+			var symetricResult = _easyProblems.IsSymmetric(symetric);
+
+			TreeNode notSymetric = new TreeNode(1);
+			notSymetric.left = new TreeNode(2);
+			notSymetric.right = new TreeNode(2);
+
+			notSymetric.left.right = new TreeNode(3);
+
+			notSymetric.right.right = new TreeNode(3);
+
+			var nonSymetric = _easyProblems.IsSymmetric(notSymetric);
+
+			Assert.Multiple(() =>
+			{
+				Assert.That(symetricResult, Is.EqualTo(true), "Should be symetric");
+				Assert.That(nonSymetric, Is.EqualTo(false), "Should be non-symetric");
+			});
 		}
 	}
 }

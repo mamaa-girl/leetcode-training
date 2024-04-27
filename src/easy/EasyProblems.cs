@@ -1,5 +1,4 @@
 ﻿using Domain;
-using NUnit.Framework.Interfaces;
 using System.Text;
 
 namespace easy
@@ -403,6 +402,24 @@ namespace easy
 			}
 
 			return Math.Max(MaxDepthRecursion(node.left, depth + 1), MaxDepthRecursion(node.right, depth + 1));
+		}
+
+		// https://leetcode.com/problems/symmetric-tree/
+		public bool IsSymmetric(TreeNode root)
+		{
+			var left = IsSymmetricRecurse(root.left, true);
+			var right = IsSymmetricRecurse(root.right, false);
+
+			return left == right;
+		}
+
+		private string? IsSymmetricRecurse(TreeNode node, bool inverse)
+		{
+			if (node == null)
+			{
+				return "n";
+			}
+			return node.val.ToString() + (inverse ? (IsSymmetricRecurse(node.right, inverse) + IsSymmetricRecurse(node.left, inverse)) : (IsSymmetricRecurse(node.left, inverse) + IsSymmetricRecurse(node.right, inverse)));
 		}
 	}
 }
